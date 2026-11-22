@@ -9,5 +9,36 @@
             @csrf
             <button type="submit">Cerrar Sesion</button>
         </form>
+        <h1>Mostrar registros</h1>
+        <table border="3">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Especie</th>
+                    <th>Propietario</th>
+                    <th>Fecha_Nacimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($mascota as $mascota)
+                    <tr>
+                        <td>{{$mascota->id}}</td>
+                        <td>{{$mascota->codigo}}</td>
+                        <td>{{$mascota->nombre}}</td>
+                        <td>{{$mascota->especie}}</td>
+                        <td>{{$mascota->propietario}}</td>
+                        <td>{{$mascota->fecha_nacimiento}}</td>
+                    </tr>
+                    @empty
+                        <td>
+                            <p>No hay datos</p>
+                        </td>
+                
+            @endforelse
+            </tbody>
+        </table>
     </body>
 </html>
