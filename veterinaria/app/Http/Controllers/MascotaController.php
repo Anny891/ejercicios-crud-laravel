@@ -38,7 +38,7 @@ class MascotaController extends Controller
             'nombre'=>'required|string|max:80',
             'especie'=>'required|in:Perro,Gato,Otro',
             'propietario'=>'required|string|max:100',
-            'fecha_nacimiento'=>'required|date'
+            'fecha_nacimiento'=>'required|date|before:tomorrow'
         ]);
 
         Mascota::create($dato);
@@ -76,7 +76,7 @@ class MascotaController extends Controller
             'nombre'=>'required|string|max:80',
             'especie'=>'required|in:Perro,Gato,Otro',
             'propietario'=>'required|string|max:100',
-            'fecha_nacimiento'=>'required|date'
+            'fecha_nacimiento'=>'required|date|before:tomorrow'
         ]);
 
         $mascota = Mascota::findOrFail($id);
@@ -93,5 +93,10 @@ class MascotaController extends Controller
     public function destroy(string $id)
     {
         //
+        $mascota = Mascota::findOrFail($id);
+
+        $mascota->delete();
+
+        return redirect()->route('mascota.index')->with('success', 'Se elimino correctamente');
     }
 }

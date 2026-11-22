@@ -27,3 +27,6 @@ Route::get('/mascota/{id}/edit', [MascotaController::class, 'edit'])
     ->name('mascota.edit');
 Route::put('/mascota/{id}', [MascotaController::class, 'update'])
     ->name('mascota.update');
+
+Route::delete('/mascota/{id}', [MascotaController::class, 'destroy'])
+    ->name('mascota.destroy');

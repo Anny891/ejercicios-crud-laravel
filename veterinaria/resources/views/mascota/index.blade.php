@@ -39,6 +39,11 @@
                         <td>{{$mascotas->fecha_nacimiento}}</td>
                         <td>
                             <a href="{{route('mascota.edit', $mascotas->id)}}">Editar</a>
+                            <form method="post" action="{{route('mascota.destroy', $mascotas->id)}}">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" onclick="return confirm('¿Quieres eliminarlo?')">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                     @empty
