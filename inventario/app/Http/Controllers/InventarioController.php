@@ -24,6 +24,7 @@ class InventarioController extends Controller
     public function create()
     {
         //
+        return view('inventario.create');
     }
 
     /**
@@ -32,6 +33,16 @@ class InventarioController extends Controller
     public function store(Request $request)
     {
         //
+        $dato= $request->validate([
+            'codigo'=>'required|string|unique:inventarios,codigo',
+            'nombre'=>'required|string|max:100',
+            'precio'=>'required|numeric|min:0',
+            'existencias'=>'required|integer|min:0'
+        ]);
+
+        Inventario::create($dato);
+
+        return redirect()->route('inventario.index');
     }
 
     /**

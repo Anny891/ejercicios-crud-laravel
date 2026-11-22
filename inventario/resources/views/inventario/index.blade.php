@@ -11,6 +11,8 @@
         </form>
 
         <h1>Mostrar Inventario</h1>
+        <br><br>
+        <a href="{{route('inventario.create')}}">Registrar Producto</a>
         <table border="3">
             <thead>
                 <tr>
