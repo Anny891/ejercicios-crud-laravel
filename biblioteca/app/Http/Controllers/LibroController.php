@@ -60,6 +60,9 @@ class LibroController extends Controller
     public function edit(string $id)
     {
         //
+        $libro = Libro::findOrFail($id);
+
+        return view('libro.edit', compact('libro'));
     }
 
     /**
@@ -68,6 +71,18 @@ class LibroController extends Controller
     public function update(Request $request, string $id)
     {
         //
+         $dato = $request->validate([
+            'codigo'=> 'required|string|unique:libros,codigo,' .$id,
+            'titulo'=> 'required|string|max:150',
+            'autor'=> 'required|string|max:100',
+            'anio_publicacion' => 'required|integer|between:1450,2026'
+        ]);
+
+        $libro = Libro::findOrFail($id);
+
+        $libro->update($dato);
+        
+        return redirect()->route('libro.index');
     }
 
     /**

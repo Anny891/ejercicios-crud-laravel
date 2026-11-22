@@ -27,3 +27,10 @@ Route::get('/libro/create', [LibroController::class, 'create'])
     ->name('libro.create');
 Route::post('/libro', [LibroController::class, 'store'])
     ->name('libro.store');
+
+Route::get('/libro/{id}/edit', [LibroController::class, 'edit'])
+    ->middleware('auth')
+    ->name('libro.edit');
+
+Route::Put('/libro/{id}', [LibroController::class, 'update'])
+    ->name('libro.update');

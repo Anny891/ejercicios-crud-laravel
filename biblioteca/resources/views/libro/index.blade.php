@@ -32,6 +32,11 @@
                      <td>{{$libros->titulo}}</td>
                      <td>{{$libros->autor}}</td>
                      <td>{{$libros->anio_publicacion}}</td>
+                     <td>
+                        <a href="{{route('libro.edit', $libros->id)}}">
+                            Editar
+                        </a>
+                     </td>
                 </tr>
                 @empty 
                 <tr>
