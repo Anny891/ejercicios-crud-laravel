@@ -32,6 +32,9 @@
                     <td>{{$inventarios->nombre}}</td>
                     <td>{{$inventarios->precio}}</td>
                     <td>{{$inventarios->existencias}}</td>
+                    <td>
+                        <a href="{{route('inventario.edit',$inventarios->id )}}">Editar</a>
+                    </td>
                 </tr>
                 @empty
                 <tr>

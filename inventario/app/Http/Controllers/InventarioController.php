@@ -59,6 +59,9 @@ class InventarioController extends Controller
     public function edit(string $id)
     {
         //
+        $inventario = Inventario::findOrFail($id);
+
+        return view('inventario.edit', compact('inventario'));
     }
 
     /**
@@ -67,6 +70,18 @@ class InventarioController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $dato= $request->validate([
+            'codigo'=>'required|string|unique:inventarios,codigo,' .$id,
+            'nombre'=>'required|string|max:100',
+            'precio'=>'required|numeric|min:0',
+            'existencias'=>'required|integer|min:0'
+        ]);
+
+         $inventario = Inventario::findOrFail($id);
+
+         $inventario->update($dato);
+         return redirect()->route('inventario.index');
+
     }
 
     /**

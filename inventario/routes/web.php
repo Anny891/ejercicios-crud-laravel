@@ -24,3 +24,8 @@ Route::get('/inventario/create', [InventarioController::class, 'create'])
     ->name('inventario.create');
 Route::Post('/inventario', [InventarioController::class, 'store'])
     ->name('inventario.store');
+
+Route::get('/inventario/{id}/edit', [InventarioController::class, 'edit'])
+    ->name('inventario.edit');
+Route::Put('/inventario/{id}', [InventarioController::class, 'update'])
+    ->name('inventario.update');
