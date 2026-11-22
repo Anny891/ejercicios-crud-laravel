@@ -34,6 +34,12 @@
                     <td>{{$inventarios->existencias}}</td>
                     <td>
                         <a href="{{route('inventario.edit',$inventarios->id )}}">Editar</a>
+
+                        <form method="post" action="{{route('inventario.destroy',$inventarios->id )}}">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" onclick="return confirm('¿Deseas Eliminar este dato?')">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
                 @empty
