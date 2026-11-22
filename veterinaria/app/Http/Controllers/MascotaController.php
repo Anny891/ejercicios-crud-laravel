@@ -24,6 +24,7 @@ class MascotaController extends Controller
     public function create()
     {
         //
+        return view('mascota.create');
     }
 
     /**
@@ -32,6 +33,17 @@ class MascotaController extends Controller
     public function store(Request $request)
     {
         //
+        $dato = $request->validate([
+            'codigo'=>'required|string|unique:mascotas,codigo',
+            'nombre'=>'required|string|max:80',
+            'especie'=>'required|in:Perro,Gato,Otro',
+            'propietario'=>'required|string|max:100',
+            'fecha_nacimiento'=>'required|date'
+        ]);
+
+        Mascota::create($dato);
+
+        return redirect()->route('mascota.index');
     }
 
     /**

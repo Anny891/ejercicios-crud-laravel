@@ -10,6 +10,8 @@
             <button type="submit">Cerrar Sesion</button>
         </form>
         <h1>Mostrar registros</h1>
+
+        <a href="{{route('mascota.create')}}">Registrar Mascota</a>
         <table border="3">
             <thead>
                 <tr>

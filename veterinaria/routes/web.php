@@ -17,3 +17,8 @@ Route::post('/login', [LoginController::class, 'login'])
 
 Route::post('/logout', [LoginController::class, 'logout'])
     ->name('logout');
+
+Route::get('/mascota/create', [MascotaController::class, 'create'])
+    ->name('mascota.create');
+Route::post('/mascota', [MascotaController::class, 'store'])
+    ->name('mascota.store');
