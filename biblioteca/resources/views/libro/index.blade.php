@@ -36,6 +36,11 @@
                         <a href="{{route('libro.edit', $libros->id)}}">
                             Editar
                         </a>
+                        <form method="Post" action="{{route('libro.destroy', $libros->id)}}">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" onclick="return confirm('¿Deseas eliminarlo?')">Eliminar</button>
+                        </form>
                      </td>
                 </tr>
                 @empty 

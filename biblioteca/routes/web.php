@@ -34,3 +34,6 @@ Route::get('/libro/{id}/edit', [LibroController::class, 'edit'])
 
 Route::Put('/libro/{id}', [LibroController::class, 'update'])
     ->name('libro.update');
+
+Route::delete('/libro/{id}', [LibroController::class, 'destroy'])
+    ->name('libro.destroy');
