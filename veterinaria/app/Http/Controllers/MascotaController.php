@@ -60,6 +60,9 @@ class MascotaController extends Controller
     public function edit(string $id)
     {
         //
+        $mascota = Mascota::findOrFail($id);
+
+        return view('mascota.edit', compact('mascota'));
     }
 
     /**
@@ -68,6 +71,20 @@ class MascotaController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $dato = $request->validate([
+            'codigo'=>'required|string|unique:mascotas,codigo,' .$id,
+            'nombre'=>'required|string|max:80',
+            'especie'=>'required|in:Perro,Gato,Otro',
+            'propietario'=>'required|string|max:100',
+            'fecha_nacimiento'=>'required|date'
+        ]);
+
+        $mascota = Mascota::findOrFail($id);
+
+        $mascota->update($dato);
+
+        return redirect()->route('mascota.index')->with('success', 'Se edito correctamente');
+
     }
 
     /**

@@ -22,3 +22,8 @@ Route::get('/mascota/create', [MascotaController::class, 'create'])
     ->name('mascota.create');
 Route::post('/mascota', [MascotaController::class, 'store'])
     ->name('mascota.store');
+
+Route::get('/mascota/{id}/edit', [MascotaController::class, 'edit'])
+    ->name('mascota.edit');
+Route::put('/mascota/{id}', [MascotaController::class, 'update'])
+    ->name('mascota.update');

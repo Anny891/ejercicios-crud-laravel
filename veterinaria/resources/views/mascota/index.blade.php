@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-    <thead>
+    <head>
         <meta charset="UTF-8">
         <title>Mascotas</title>
-    </thead>
+    </head>
     <body>
         <form method="post" action="{{route('logout')}}">
             @csrf
@@ -12,6 +12,10 @@
         <h1>Mostrar registros</h1>
 
         <a href="{{route('mascota.create')}}">Registrar Mascota</a>
+
+        @if (session('success'))
+            <p>{{session('success')}}</p>
+        @endif
         <table border="3">
             <thead>
                 <tr>
@@ -25,19 +29,22 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($mascota as $mascota)
+                @forelse ($mascota as $mascotas)
                     <tr>
-                        <td>{{$mascota->id}}</td>
-                        <td>{{$mascota->codigo}}</td>
-                        <td>{{$mascota->nombre}}</td>
-                        <td>{{$mascota->especie}}</td>
-                        <td>{{$mascota->propietario}}</td>
-                        <td>{{$mascota->fecha_nacimiento}}</td>
+                        <td>{{$mascotas->id}}</td>
+                        <td>{{$mascotas->codigo}}</td>
+                        <td>{{$mascotas->nombre}}</td>
+                        <td>{{$mascotas->especie}}</td>
+                        <td>{{$mascotas->propietario}}</td>
+                        <td>{{$mascotas->fecha_nacimiento}}</td>
+                        <td>
+                            <a href="{{route('mascota.edit', $mascotas->id)}}">Editar</a>
+                        </td>
                     </tr>
                     @empty
-                        <td>
+                        <tr>
                             <p>No hay datos</p>
-                        </td>
+                        </tr>
                 
             @endforelse
             </tbody>
