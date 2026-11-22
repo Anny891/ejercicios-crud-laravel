@@ -9,7 +9,12 @@
             @csrf
             <button type="submit">Cerrar Sesion</button>
         </form>
+        <h2>Estudiantes Registrados</h2>
+        <a href="{{route('estudiante.create')}}">Registrar estudiante</a>
 
+        @if(session('success'))
+          <p>{{ session('success') }}</p>
+        @endif
         <table border="3">
             <thead>
                 <tr>

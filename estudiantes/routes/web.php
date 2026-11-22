@@ -17,4 +17,7 @@ Route::post('/login', [LoginController::class, 'login'])
 Route::post('/logout', [LoginController::class, 'logout'])
     ->name('logout');
 
-
+Route::get('/estudiante/create', [EstudianteController::class, 'create'])
+    ->name('estudiante.create');
+Route::post('/estudiante', [EstudianteController::class, 'store'])
+     ->name('estudiante.store');

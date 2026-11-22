@@ -24,6 +24,7 @@ class EstudianteController extends Controller
     public function create()
     {
         //
+        return view('estudiante.create');
     }
 
     /**
@@ -32,6 +33,16 @@ class EstudianteController extends Controller
     public function store(Request $request)
     {
         //
+        $dato = $request->validate([
+            'numero_cuenta'=>'required|string|unique:estudiantes,numero_cuenta',
+            'nombre'=>'required|string|max:100',
+            'correo'=>'required|email|unique:estudiantes,correo',
+            'fecha_nacimiento'=>'required|date'
+        ]);
+
+        Estudiante::create($dato);
+
+        return redirect()->route('estudiante.index')->with('success', 'guardo correcto');
     }
 
     /**
