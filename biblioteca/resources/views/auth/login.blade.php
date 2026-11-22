@@ -9,6 +9,9 @@
         <form method="Post" action="/login">
 
         @csrf
+        @error('usuario')
+             <p>{{ $message }}</p>
+        @enderror
         <label>Usuario</label>
         <input type="text" name="usuario" id="usuario" required>
 

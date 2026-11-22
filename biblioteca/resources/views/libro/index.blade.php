@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Login</title>
+        <title>Libros</title>
     </head>
     <body>
         <h1>Mostrar Libros</h1>
@@ -10,6 +10,34 @@
             @csrf
             <button type="submit">Cerrar sesion</button>
         </form>
+        <h2>Registro Libros</h2>
+        <table border="3">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Codigo</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>anio_publicacion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($libro as $libros)
+                <tr>
+                    <td>{{$libros->id}}</td>
+                     <td>{{$libros->codigo}}</td>
+                     <td>{{$libros->titulo}}</td>
+                     <td>{{$libros->autor}}</td>
+                     <td>{{$libros->anio_publicacion}}</td>
+                </tr>
+                @empty 
+                <tr>
+                    <td>No se verifican datos</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </body>
 
 </html>
