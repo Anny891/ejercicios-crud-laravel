@@ -59,6 +59,10 @@ class EstudianteController extends Controller
     public function edit(string $id)
     {
         //
+        $estudiante = Estudiante::findOrFail($id);
+
+        return view('estudiante.edit', compact('estudiante'));
+
     }
 
     /**
@@ -67,6 +71,17 @@ class EstudianteController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $dato = $request->validate([
+            'numero_cuenta'=>'required|string|unique:estudiantes,numero_cuenta,' .$id,
+            'nombre'=>'required|string|max:100',
+            'correo'=>'required|email|unique:estudiantes,correo,' .$id,
+            'fecha_nacimiento'=>'required|date'
+        ]);
+
+        $estudiante = Estudiante::findOrFail($id);
+
+        $estudiante->update($dato);
+         return redirect()->route('estudiante.index')->with('success', 'editado correcto');
     }
 
     /**

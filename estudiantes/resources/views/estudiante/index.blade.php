@@ -34,6 +34,11 @@
                         <td>{{$estudiantes->nombre}}</td>
                         <td>{{$estudiantes->correo}}</td>
                         <td>{{$estudiantes->fecha_nacimiento}}</td>
+                        <td>
+                            <a href="{{route('estudiante.edit', $estudiantes->id )}}">
+                                Editar
+                            </a>
+                        </td>
                     </tr>
                 @empty
                     <tr>

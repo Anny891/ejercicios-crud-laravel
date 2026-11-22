@@ -21,3 +21,10 @@ Route::get('/estudiante/create', [EstudianteController::class, 'create'])
     ->name('estudiante.create');
 Route::post('/estudiante', [EstudianteController::class, 'store'])
      ->name('estudiante.store');
+
+Route::get('/estudiante/{id}/edit', [EstudianteController::class, 'edit'])
+    ->name('estudiante.edit');
+
+Route::put('/estudiante/{id}', [EstudianteController::class, 'update'])
+     ->name('estudiante.update');
+    
