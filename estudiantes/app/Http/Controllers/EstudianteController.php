@@ -90,5 +90,10 @@ class EstudianteController extends Controller
     public function destroy(string $id)
     {
         //
+         $estudiante = Estudiante::findOrFail($id);
+
+          $estudiante->delete();
+         return redirect()->route('estudiante.index')->with('success', 'eliminado correcto');
+
     }
 }

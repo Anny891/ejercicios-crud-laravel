@@ -38,6 +38,11 @@
                             <a href="{{route('estudiante.edit', $estudiantes->id )}}">
                                 Editar
                             </a>
+                            <form method="post" action="{{route('estudiante.destroy', $estudiantes->id)}}">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" onclick="return confirm('¿Deseas eliminarlo?')">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                 @empty
