@@ -25,6 +25,7 @@ class LibroController extends Controller
     public function create()
     {
         //
+        return view('libro.create');
     }
 
     /**
@@ -33,6 +34,16 @@ class LibroController extends Controller
     public function store(Request $request)
     {
         //
+        $dato = $request->validate([
+            'codigo'=> 'required|string|unique:libros,codigo',
+            'titulo'=> 'required|string|max:150',
+            'autor'=> 'required|string|max:100',
+            'anio_publicacion' => 'required|integer|between:1450,2026'
+        ]);
+
+        Libro::create($dato);
+
+        return redirect()->route('libro.index');
     }
 
     /**

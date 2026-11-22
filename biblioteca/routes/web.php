@@ -21,3 +21,9 @@ Route::post('/login', [LoginController::class, 'login'])
 Route::post('/logout', [LoginController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
+
+Route::get('/libro/create', [LibroController::class, 'create'])
+    ->middleware('auth')
+    ->name('libro.create');
+Route::post('/libro', [LibroController::class, 'store'])
+    ->name('libro.store');

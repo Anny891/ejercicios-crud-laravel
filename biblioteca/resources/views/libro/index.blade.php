@@ -11,6 +11,8 @@
             <button type="submit">Cerrar sesion</button>
         </form>
         <h2>Registro Libros</h2>
+        <a href="{{route('libro.create')}}">Registrar Libro</a>
+
         <table border="3">
             <thead>
                 <tr>
