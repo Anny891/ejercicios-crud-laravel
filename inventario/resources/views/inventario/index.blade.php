@@ -9,5 +9,35 @@
             @csrf
             <button type="submit">Cerrar Sesion</button>
         </form>
+
+        <h1>Mostrar Inventario</h1>
+        <table border="3">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Existencias</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($inventario as $inventarios)
+                <tr>
+                    <td>{{$inventarios->id}}</td>
+                    <td>{{$inventarios->codigo}}</td>
+                    <td>{{$inventarios->nombre}}</td>
+                    <td>{{$inventarios->precio}}</td>
+                    <td>{{$inventarios->existencias}}</td>
+                </tr>
+                @empty
+                <tr>
+                    <td>No hay datos</td>
+                </tr>
+                @endforelse
+            </tbody>
+
+        </table>
     </body>
 </html>
