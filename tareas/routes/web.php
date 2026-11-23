@@ -30,6 +30,7 @@ Route::get('/tarea/{id}/edit', [TareaController::class, 'edit'])
     ->middleware('auth')
     ->name('tarea.edit');
 Route::put('/tarea/{id}', [TareaController::class, 'update'])
+    ->middleware('auth')
     ->name('tarea.update');
 
 Route::delete('/tarea/{id}', [TareaController::class, 'destroy'])
