@@ -12,6 +12,9 @@
         </form>
         <h1>Mostrar Registros Tareas</h1>
         <a href="{{route('tarea.create')}}">Registrar Tarea</a>
+        @if(session('success'))
+            <p>{{session('success')}}</p>
+        @endif
         <table border="3">
             <thead>
                 <tr>
@@ -33,6 +36,9 @@
                         <td>{{$tareas->responsable}}</td>
                         <td>{{$tareas->fecha_limite}}</td>
                         <td>{{$tareas->estado}}</td>
+                        <td>
+                            <a href="{{route('tarea.edit', $tareas->id )}}">Editar</a>
+                        </td>
                     </tr>
                 @empty
                     <td>

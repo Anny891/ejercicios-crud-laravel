@@ -21,6 +21,13 @@ Route::post('/logout', [LoginContoller::class, 'logout'])
     ->name('logout');
 
 Route::get('/tarea/create', [TareaController::class, 'create'])
+    ->middleware('auth')
     ->name('tarea.create');
 Route::post('/tarea', [TareaController::class, 'store'])
     ->name('tarea.store');
+
+Route::get('/tarea/{id}/edit', [TareaController::class, 'edit'])
+    ->middleware('auth')
+    ->name('tarea.edit');
+Route::put('/tarea/{id}', [TareaController::class, 'update'])
+    ->name('tarea.update');

@@ -60,6 +60,9 @@ class TareaController extends Controller
     public function edit(string $id)
     {
         //
+        $tarea = Tarea::findOrFail($id);
+
+        return view('tarea.edit', compact('tarea'));
     }
 
     /**
@@ -68,6 +71,17 @@ class TareaController extends Controller
     public function update(Request $request, string $id)
     {
         //
+         $dato = $request->validate([
+            'titulo'=>'required|string|max:150',
+            'descripcion'=>'required|string|max:500',
+            'responsable'=>'required|string|max:100',
+            'fecha_limite'=>'required|date',
+            'estado'=>'required|string|in:pendiente,proceso,completada'
+        ]);
+        $tarea = Tarea::findOrFail($id);
+        $tarea->update($dato);
+        return redirect()->route('tarea.index')->with('success','editado correctamente');
+
     }
 
     /**
