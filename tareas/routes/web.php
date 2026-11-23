@@ -31,3 +31,6 @@ Route::get('/tarea/{id}/edit', [TareaController::class, 'edit'])
     ->name('tarea.edit');
 Route::put('/tarea/{id}', [TareaController::class, 'update'])
     ->name('tarea.update');
+
+Route::delete('/tarea/{id}', [TareaController::class, 'destroy'])
+    ->name('tarea.destroy');

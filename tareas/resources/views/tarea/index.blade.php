@@ -38,6 +38,12 @@
                         <td>{{$tareas->estado}}</td>
                         <td>
                             <a href="{{route('tarea.edit', $tareas->id )}}">Editar</a>
+
+                            <form method="post" action="{{route('tarea.destroy', $tareas->id )}}">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" onclick="return confirm('¿Desea eliminar este dato?')">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                 @empty

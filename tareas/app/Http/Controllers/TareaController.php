@@ -90,5 +90,8 @@ class TareaController extends Controller
     public function destroy(string $id)
     {
         //
+         $tarea = Tarea::findOrFail($id);
+        $tarea->delete();
+        return redirect()->route('tarea.index')->with('success','eliminado correctamente');
     }
 }
