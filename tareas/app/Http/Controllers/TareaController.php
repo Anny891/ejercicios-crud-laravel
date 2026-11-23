@@ -15,7 +15,7 @@ class TareaController extends Controller
         //
         $tarea = Tarea::all();
 
-        return view('tarea.index');
+        return view('tarea.index', compact('tarea'));
     }
 
     /**
