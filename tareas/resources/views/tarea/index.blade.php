@@ -11,7 +11,7 @@
             <button type="submit">Cerrar Sesion</button>
         </form>
         <h1>Mostrar Registros Tareas</h1>
-
+        <a href="{{route('tarea.create')}}">Registrar Tarea</a>
         <table border="3">
             <thead>
                 <tr>

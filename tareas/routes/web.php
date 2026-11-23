@@ -17,7 +17,10 @@ Route::get('/login', [LoginContoller::class, 'showLogin'])
 Route::post('/login', [LoginContoller::class, 'login'])
     ->name('login.submit');
 
-    Route::post('/logout', [LoginContoller::class, 'logout'])
+Route::post('/logout', [LoginContoller::class, 'logout'])
     ->name('logout');
 
-
+Route::get('/tarea/create', [TareaController::class, 'create'])
+    ->name('tarea.create');
+Route::post('/tarea', [TareaController::class, 'store'])
+    ->name('tarea.store');
